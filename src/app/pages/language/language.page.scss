@@ -1,0 +1,46 @@
+*, h3, p {
+    margin: 0;
+}
+    
+
+    ion-content {
+        --background: url('./../../../assets/bg_images/language-page.png') no-repeat center center / cover;
+        --ion-text-color: #030303;
+    
+        .logo-container {
+    
+          .logo {
+            width: 200px;
+          }
+    
+          @media screen and (min-width: 576px) {
+            .logo {
+              width: 250px;
+            }
+          }
+        }
+
+        h3 {
+            margin-bottom: 10px;
+        }
+    
+        .button-row {
+          ion-button {
+              font-size: 20px;
+              --background: rgba(255, 255, 255, 0.247);
+              --border-radius: 3mm;
+          }
+
+          ion-button#btn-english {
+              color: rgb(139, 6, 95);
+              --border-color: rgb(139, 6, 95);
+              margin-bottom: 10px;
+          }
+
+          ion-button#btn-sinhala {
+            color: rgb(139, 6, 95);
+            --border-color: rgb(139, 6, 95);
+        }
+        }
+    }
+    

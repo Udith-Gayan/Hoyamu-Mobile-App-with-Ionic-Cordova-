@@ -1,0 +1,70 @@
+*, h3,h1,h2,h4,h5 p {
+    margin: 0;
+}
+
+ion-button {
+    font-size: 1.18rem;
+}
+
+ion-content {
+    --ion-text-color: #030303;
+
+    .section-1 {
+
+        ion-col {
+        background-image: url('./../../../assets/bg_images/home-page.png')!important;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+            .button-row {
+    
+                .btn-div {
+                    width: 100%; 
+                    height: 100%; 
+                    display: flex; 
+                    flex-direction: column; 
+                    justify-content: center; 
+                    align-items: center;
+                    --ion-color-primary-contrast:#5a0545;
+    
+                    ion-button {
+                        --background:linear-gradient(to top, #4facfeb2 0%, #00f1fec5 100%)
+                    }
+    
+                    #search-btn {
+                        margin-bottom: 10px;
+                        width: 90%;
+                    }
+        
+                    #post-btn {
+                        width: 90%;
+                    }
+                }
+    
+            }
+
+            .footer-row {
+                color: rgb(27, 26, 26);
+                font-weight: 600;
+                font-size: smaller;
+            }
+
+        }
+    }
+
+}
+
+.button-column {
+    --ion-background-color: black!important;
+}
+
+::ng-deep .custom-css-for-modal-footer-in-dashboard {
+    --height: 100%;
+    --max-height: 100%;
+    border-top-left-radius: 5mm;
+    border-top-right-radius: 5mm;
+    top: 60%;
+    width: 100%;
+    --min-width: 100%;
+
+}

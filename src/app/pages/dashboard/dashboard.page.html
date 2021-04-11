@@ -1,0 +1,33 @@
+
+<ion-content>
+  <ion-row style="height: 100%;" class="section-1">
+     <ion-col size="12" class="ion-no-padding">
+      <ion-row style="height: 25%;" class="ion-justify-content-center ion-align-items-center">
+        <img src="assets/logos/homelogo.png" style="width:200px;" alt="logo">
+      </ion-row>
+      <ion-row style="height: 45%; background-color: rgba(0, 255, 255, 0.308);">
+
+      </ion-row>
+      <ion-row style="height: 25%;" class="ion-align-items-center button-row">
+        <div class="btn-div">
+          <ion-button class=" ion-text-capitalize" expand="block" id="search-btn" (click)="goTo(searchMenuPath)">
+            Search Items
+          </ion-button>
+          <ion-button expand="block" class="ion-text-capitalize" id="post-btn" (click)="goTo(postMenuPath)">
+            Post Items
+          </ion-button>
+        </div>
+      </ion-row>
+      <ion-row style="height: 5%;" class="ion-align-items-center ion-justify-content-center footer-row">
+        <p class="ion-text-center" (click)="showFooterAlert()">Developed by</p>
+        <ion-icon name="caret-down-outline" (click)="showFooterAlert()"></ion-icon>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <!-- <ion-row style="height: 30%;" class="section-2">
+    <ion-col class="ion-no-padding">
+      <app-footer></app-footer>
+    </ion-col>
+  </ion-row> -->
+</ion-content>
+<ion-backdrop *ngIf="isBackDropVisible" style="opacity: 0.9;"></ion-backdrop>

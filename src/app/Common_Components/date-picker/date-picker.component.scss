@@ -1,0 +1,13 @@
+::ng-deep .sc-ion-picker-ios-h{
+    color: #1c6f84!important;
+}
+
+::ng-deep .picker-above-highlight.sc-ion-picker-ios {
+    background: linear-gradient(to bottom, var(--background, var(--ion-background-color, #fff)) 20%, #503c3c91 100%)!important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0)!important;
+}
+
+::ng-deep .picker-below-highlight.sc-ion-picker-ios {
+    background: linear-gradient(to top, var(--background, var(--ion-background-color, #fff)) 20%, #503c3c91 100%)!important;
+    border-top: 1px solid rgba(0, 0, 0, 0)!important;
+}

@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+  }
+  
+  h2, h3, h4, h5, p {
+    margin: 0;
+    padding: 0;
+  }
+
+  /**********  Header *********/
+  #close-btn {
+      --background: #ffffff;
+  }
+
+  /*********  X  Gerader  X *****/ 
+  
+  /************   Section footer **************************/
+  
+  .section-footer {
+    background-image: url('./../../../../assets/bg_images/footer-page.png');
+    background-size: cover;
+    font-size: 15px;
+  
+    .footer-container {
+      margin: 2% 10%;
+  
+      ul {
+        margin-top: 10px;
+        list-style: none;
+  
+        li {
+          display: inline;
+          margin: 0 5%;
+  
+          // blue #4209b6     red - #c60227
+        }
+      }
+  
+      .t-aim {
+        margin-bottom: 10px;
+        font-size: 20px;
+  
+        background-image: linear-gradient(to top, #37ecba 0%, #72afd3 100%);
+        background-clip: text;
+        color: transparent;
+  
+      }
+  
+      .t-by {
+        font-weight: 600;
+        color: black;
+      }
+  
+      .t-name {
+        letter-spacing: 2px;
+        font-weight: 700;
+      }
+  
+      #n-udith {
+        color: #700619;
+      }
+  
+      #n-ishara {
+        color: #4209b6;
+      }
+  
+      .t-uom {
+        font-size: 10px;
+        margin-top: 2px;
+  
+        color: rgb(58, 56, 56);
+      }
+  
+      .t-contact {
+        margin-top: 10px;
+        font-weight: 600;
+        color: black;
+      }
+    }
+  }
+  
+  
+  
+  

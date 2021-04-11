@@ -1,0 +1,13 @@
+<ion-item class="input-item" lines="none">
+  <ion-button *ngIf="!hasImage" (click)="selectImage($event)" type="file">
+    <ion-icon name="cloud-upload-outline"></ion-icon>
+     &nbsp;Upload Image
+  </ion-button>
+  <ion-button *ngIf="hasImage && includeClearButton" class="clear-button" (click)="clearImage()">
+    <ion-icon name="close"></ion-icon>
+     &nbsp;Clear Image
+  </ion-button>
+  <div *ngIf="imgResultAfterCompress && previewImage" class="item-image-preview-on-select cmv-5-p cmh-5-p" style="width: 350px; height: 300px;">
+    <img [src]="imgResultAfterCompress" style="width: 100%; height: 100%" />
+  </div>
+</ion-item>

@@ -1,0 +1,11 @@
+<ion-item class="input-item" lines="none">
+  <ion-label position="floating">{{date_label}}</ion-label>
+  <ion-datetime [value]="selectedDate" 
+    [min]="minDate" [max]="maxDate"
+    [displayFormat]="displayFormat"
+    [monthShortNames]="monthShortNames"
+    [disabled]="disabled"
+    mode="ios"
+    (ionChange)="whenDateChanged()"
+    [(ngModel)]="selectedDate"></ion-datetime>
+</ion-item>

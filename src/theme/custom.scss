@@ -1,0 +1,118 @@
+ion-label {
+  font-size: 20px!important;
+  font-weight: 600;
+  --color: #1c6f84!important;
+}
+
+ion-item.input-item {
+  --ion-text-color: #2598b4;
+  --ion-item-background: #ffffff00!important;
+  margin: 10px 20px;
+  box-shadow: 0px 0px 10px #403e3ed9;
+  border-radius: 10px;
+
+}
+
+.item-form-bg {
+  padding: 0;
+  height: 92vh;
+  overflow-y: scroll;
+  overflow: hidden;
+  background-color: rgb(255, 255, 255);
+
+  position: absolute;
+}
+.logo-watermark {
+  position: absolute;
+  top: 40vh;
+  left: 35vw;
+  width: 150px;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+.image-uploading-action-sheet{
+  --background: #ffffff;
+  --color: #1c6f84!important;
+  --button-background: #ffffff;
+  --ion-background-color: #ffffff;
+  --button-background-selected: #ffffff;
+}
+
+/*** Validation Classes ***/
+.required {
+  border-left: 4px solid red;
+}
+
+/*** custom margins ***/
+.cm-0 {
+  margin: 0px;
+}
+.cm-10{
+  margin: 10px;
+}
+.cm-20{
+  margin: 20px;
+}
+.cm-30{
+  margin: 30px;
+}
+.cmv-10{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.cmh-10{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.cmh-20{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.cm-10-p{
+  margin: 10%;
+}
+.cm-20-p{
+  margin: 20%;
+}
+.cm-30-p{
+  margin: 30%;
+}
+.cmv-5-p{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.cmv-10-p{
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.cmh-5-p{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.cmh-10-p{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.cmh-20-p{
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+/*** Paddings ***/
+
+.cp-0{
+  padding: 0px;
+}
+
+.text-white{
+  --ion-text-color: #ffffff;
+}
+
+.next-button-in-item-forms{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 30%;
+  margin-right: 30%;
+}

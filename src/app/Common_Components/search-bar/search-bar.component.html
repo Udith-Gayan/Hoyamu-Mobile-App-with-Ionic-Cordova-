@@ -1,0 +1,13 @@
+<ion-buttons slot="end" style="float: right;">
+  <ion-button *ngIf="!showSearchBar" (click)="showSearchbar()" class="searchIconButton">
+    <ion-icon slot="icon-only" name="search"></ion-icon>
+  </ion-button>
+</ion-buttons>
+<ion-searchbar class="searchbar" mode="ios" #searchTarget
+                showCancelButton="always" (ionCancel)="hideSearchbar()" cancelButtonText="Close"
+                placeholder="Search"
+                (ionChange)="onTextChange($event)"
+                (ionBlur)="onLoseFocus(searchTarget.value)"
+                *ngIf="showSearchBar" animated
+                [@inOutAnimation]>
+</ion-searchbar>

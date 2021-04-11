@@ -1,0 +1,21 @@
+.searchIconButton {
+    --background: #fefefea4!important;
+    color: black!important;
+    width: 30px!important;
+    height: 30px!important;
+    --padding-top: 4px!important;
+    --padding-end: 4px!important;
+    --padding-bottom: 4px!important;
+    --padding-start: 4px!important;
+}
+
+.searchbar {
+    --background: #ffffff50;
+    --icon-color: #0a0a0a;
+    --color: #fffbfb;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 85vw;
+    --cancel-button-color: #cac8c8;
+    --clear-button-color: #cac8c8;
+}
