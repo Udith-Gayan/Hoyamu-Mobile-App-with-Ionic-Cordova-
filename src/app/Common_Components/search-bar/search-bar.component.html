@@ -3,7 +3,7 @@
     <ion-icon slot="icon-only" name="search"></ion-icon>
   </ion-button>
 </ion-buttons>
-<ion-searchbar class="searchbar" mode="ios" #searchTarget
+<ion-searchbar #searchbarinput class="searchbar" mode="ios" #searchTarget
                 showCancelButton="always" (ionCancel)="hideSearchbar()" cancelButtonText="Close"
                 placeholder="Search"
                 (ionChange)="onTextChange($event)"

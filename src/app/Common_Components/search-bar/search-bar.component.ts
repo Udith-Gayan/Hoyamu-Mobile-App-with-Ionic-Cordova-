@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, ViewChild } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { IonSearchbar} from '@ionic/angular';
 
 @Component({
   selector: 'app-search-bar',
@@ -24,6 +25,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class SearchBarComponent implements OnInit {
 
   constructor() { }
+  @ViewChild('searchbarinput') searchbarInputRef: IonSearchbar ;
 
   // tslint:disable-next-line: no-output-native
   @Output() onSearchBarVisible: EventEmitter<any> = new EventEmitter();
@@ -43,6 +45,7 @@ export class SearchBarComponent implements OnInit {
   showSearchbar() {
     this.showSearchBar = true;
     this.onSearchBarVisible.emit(this.showSearchBar);
+    setTimeout(() => { this.searchbarInputRef.setFocus(); }, 500);
   }
 
   onTextChange(event: any) {

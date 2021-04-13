@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/post-item-menu"></ion-back-button>
     </ion-buttons>
     <ion-title class="cp-0">Item Details</ion-title>
   </ion-toolbar>
@@ -31,7 +31,7 @@
         </ion-item>
         <img-upload-button imageNamePrefix="bag" (onImageNameSet)="onImageNameChanged($event)"></img-upload-button>
         <ion-button class="next-button-in-item-forms cmh-20"
-                    [disabled]="!isFieldsValid" 
+                    [disabled]="!isFieldsValid"
                     expand="block">Submit details</ion-button>
     </ion-col>
   </ion-row>
