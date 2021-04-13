@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="cp-0">Item Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col class="item-form-bg">
+      <img src="assets/logos/homelogo.png" class="logo-watermark">
+        <ion-item class="input-item" [ngClass]="isFieldsValid ? '' : 'required'" lines="none" style="margin-top: 30px;">
+          <ion-label position="floating">Place Found :</ion-label>
+          <ion-input [(ngModel)]="item.item.placeFound" (keyup)="onPlaceFoundChange()"></ion-input>
+        </ion-item>
+        <custom-date-picker class="date-picker"
+          lang="2"
+          date_label="Date Found :"
+          (onDateChange)="onFoundDateChanged($event)"
+          maxDate="2100"
+          minDate="2020-01-01"
+          displayFormat = "DD MMM YYYY"
+          pickerFormat = "DD MMM YYYY"
+          disabled="false">
+        </custom-date-picker>
+        <ion-item class="input-item" lines="none">
+          <ion-label position="floating">Extra Note :</ion-label>
+          <ion-textarea rows="6" cols="20" [(ngModel)]="item.item.description"></ion-textarea>
+        </ion-item>
+        <img-upload-button imageNamePrefix="bag" (onImageNameSet)="onImageNameChanged($event)"></img-upload-button>
+        <ion-button class="next-button-in-item-forms cmh-20"
+                    [disabled]="!isFieldsValid" 
+                    expand="block">Submit details</ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

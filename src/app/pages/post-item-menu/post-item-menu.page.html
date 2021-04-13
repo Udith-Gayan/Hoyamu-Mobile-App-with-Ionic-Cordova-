@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-row style="justify-content: space-between; align-items: center;">
+      <ion-col *ngIf="!showSearchBar">
+        <ion-title *ngIf="!showSearchBar" style="padding-left: 0">Post Item</ion-title>
+      </ion-col>
+      <ion-col>
+        <app-search-bar (onSearchBarVisible)="onSearchBarVisible($event)"
+                        (onTextChanged)="filterItem($event)"
+                        [searchStartingFrom]="2"
+                        >
+        </app-search-bar>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- This tag  for some image element to be shown in the background-->
+  <!-- <div class="arrow-bg">
+    <img src="assets/bg_images/ss.png" width="100%" height="100%" style="margin-left: 100px;"/>
+  </div> -->
+
+  <div class="item-body">
+    <ion-row *ngFor="let row of rowList" class="item-row">
+      <ion-col *ngIf="row.items[0].isShow">
+        <ion-card style="margin-right: 0; margin-left: 0; justify-content: center;" button="true" (click)="onItemClick(row.items[0].routePath)">
+          <img [src]="row.items[0].imgUrl">
+          <ion-card-header>
+            <ion-card-title><ion-text color="dark">{{row.items[0].text}}</ion-text></ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col *ngIf="row.items[1].isShow">
+        <ion-card style="margin-right: 0; margin-left: 0;" button="true" (click)="onItemClick(row.items[1].routePath)">
+          <img [src]="row.items[1].imgUrl">
+          <ion-card-header>
+            <ion-card-title><ion-text color="dark">{{row.items[1].text}}</ion-text></ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+
+<!-- <div>
+  <ion-router-outlet name="name2"></ion-router-outlet>
+</div> -->
+</ion-content>

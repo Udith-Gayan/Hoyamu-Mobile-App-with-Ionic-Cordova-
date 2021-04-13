@@ -27,6 +27,7 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
               NativeStorage,
               Network,
               ScreenOrientation,
-              SplashScreen],
+              SplashScreen,
+              WebView],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

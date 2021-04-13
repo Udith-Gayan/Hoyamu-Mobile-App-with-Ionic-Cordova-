@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
-  }
+  },
+  {
+    path: 'post-item-menu',
+    loadChildren: () => import('./pages/post-item-menu/post-item-menu.module').then( m => m.PostItemMenuPageModule)
+  },
 ];
 @NgModule({
   imports: [

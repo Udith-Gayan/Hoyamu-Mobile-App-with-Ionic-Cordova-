@@ -19,6 +19,8 @@ export class HomePage implements AfterViewInit {
 
   ngAfterViewInit(): void {
 
+    
+
     let offlineToast: HTMLIonToastElement = null;
 
     // watch network for a disconnect
