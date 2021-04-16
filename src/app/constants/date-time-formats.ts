@@ -1,4 +1,4 @@
-export abstract class DateTimeConstants{
+export abstract class DateTimeConstants {
     static readonly DATEONLYSTANDARD = "DD/MM/YYYY";
 
     static getSinhalaShortMonthNames(): string[] {

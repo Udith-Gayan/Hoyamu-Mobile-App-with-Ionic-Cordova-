@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PostItemMenuPage } from './post-item-menu.page';
 import { BagComponent } from '../post-items/bag/bag.component';
+import { ContactFormComponent } from '../contact-form/contact-form.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
     path: 'bag',
     component: BagComponent
   },
+  {
+    path: 'contact-form',
+    component: ContactFormComponent,
+  }
 ];
 
 @NgModule({

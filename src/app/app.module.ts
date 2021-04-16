@@ -28,7 +28,7 @@ import { Network } from '@ionic-native/network/ngx';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
-
+import { Base64 } from '@ionic-native/base64/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -44,7 +44,8 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
               Network,
               ScreenOrientation,
               SplashScreen,
-              WebView],
+              WebView,
+              Base64],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

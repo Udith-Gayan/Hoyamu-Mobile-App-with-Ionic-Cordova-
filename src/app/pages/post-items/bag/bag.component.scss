@@ -1,4 +1,9 @@
-
+ion-col {
+  overflow-y: auto;
+  overflow: hidden;
+  position: relative;
+  height: 120vh;  // value differ from page to page
+}
 
 ion-item.input-item {
     // --ion-item-background: #ffffff00;
@@ -7,5 +12,5 @@ ion-item.input-item {
 
 .date-picker {
     // --ion-item-background: #ffffff;
-    // --ion-text-color: #000000; 
+    // --ion-text-color: #000000;
 }

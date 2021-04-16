@@ -7,6 +7,8 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/Camera/ngx';
+import { Base64 } from '@ionic-native/base64/ngx';
+
 
 @Component({
   selector: 'img-upload-button',
@@ -18,7 +20,8 @@ export class ImgUploaderComponent implements OnInit {
   constructor(private imageCompress: NgxImageCompressService, private camera: Camera,
               private webview: WebView,
               private actionSheetController: ActionSheetController, private toastController: ToastController,
-              private storage: NativeStorage) { }
+              private storage: NativeStorage,
+              private base64: Base64) { }
 
   @Input() includeClearButton = true;
   @Input() previewImage = true;
@@ -77,22 +80,28 @@ export class ImgUploaderComponent implements OnInit {
     };
 
     this.camera.getPicture(options).then(async imagePath => {
-      console.log('taking image method ran');
+      console.log('taking image method ran' + imagePath);
       this.imgResultBeforeCompress = this.pathForImage(imagePath);
-      let compressedBase64Image: string;
-      this.compressFile().then(res => {
-        compressedBase64Image = res;
-        console.log('New path after compress edited: ' + compressedBase64Image);
-        this.imageNameKey = this.createFileName();
-        this.emitImageName.emit(this.imageNameKey);
-        this.storage.setItem(this.imageNameKey, compressedBase64Image);
+      this.convertFilePathToBase64String(imagePath).then( res => {
+        this.imgResultBeforeCompress = res;
+        console.log("img before compress: "+ this.imgResultBeforeCompress);
+        let compressedBase64Image: string;
+        this.compressFile().then(res => {
+          compressedBase64Image = res;
+          console.log('New path after compress edited: ' + compressedBase64Image);
+          let imageExtension = ((compressedBase64Image.split(',')[0]).split(';')[0]).split('/')[1];
+          this.imageNameKey = this.createFileName(imageExtension);
+          this.emitImageName.emit(this.imageNameKey);
+          this.storage.setItem(this.imageNameKey, compressedBase64Image);
+        });
+
       });
   });
 
   }
 
-  createFileName() {
-    let d = new Date(), n = d.getTime(), newFileName = this.imageNamePrefix + '_' + n + '.jpg';
+  createFileName(imageExtension: string) {
+    let d = new Date(), n = d.getTime(), newFileName = this.imageNamePrefix + '_' + n + '.' + imageExtension;
     return newFileName;
   }
 
@@ -125,6 +134,22 @@ export class ImgUploaderComponent implements OnInit {
             this.hasImage = true;
             resolve(compressedImagePath);
           });
+    });
+  }
+
+  convertFilePathToBase64String(filePath: string): Promise<string> {
+    let base64FileString;
+    return new Promise<string>((resolve, reject) => {
+
+      this.base64.encodeFile(filePath).then((base64File: string) => {
+        base64FileString = base64File;
+        resolve(base64FileString);
+      }, (err) => {
+        console.log("Error occurred while converting the file path to base64String: ");
+        console.log(err);
+        reject(err);
+      });
+
     });
   }
 

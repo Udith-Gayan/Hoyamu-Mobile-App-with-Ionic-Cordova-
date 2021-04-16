@@ -1,3 +1,4 @@
+import { ContactFormComponent } from './../contact-form/contact-form.component';
 import { BagComponent } from './../post-items/bag/bag.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -21,7 +22,9 @@ import { ImgUploaderComponent } from 'src/app/Common_components/img-uploader/img
     IonicModule,
     PostItemMenuPageRoutingModule
   ],
-  declarations: [PostItemMenuPage, SearchBarComponent, BagComponent, DatePickerComponent, ImgUploaderComponent],
+  declarations: [PostItemMenuPage, SearchBarComponent, DatePickerComponent, ImgUploaderComponent,
+                 BagComponent,
+                 ContactFormComponent],
   providers: [PageRouterService]
 })
 export class PostItemMenuPageModule {}
