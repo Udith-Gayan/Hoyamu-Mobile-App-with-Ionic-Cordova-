@@ -26,6 +26,7 @@
     "@ionic-native/file": "^5.32.0",
     "@ionic-native/file-path": "^5.32.0",
     "@ionic-native/ionic-webview": "^5.32.0",
+    "@ionic-native/keyboard": "^5.32.1",
     "@ionic-native/native-storage": "^5.32.0",
     "@ionic-native/network": "^5.32.0",
     "@ionic-native/screen-orientation": "^5.32.0",

@@ -6,3 +6,102 @@
     <ion-title class="cp-0">Contact Details</ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+  <div id="clip-background-contact-1">
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="100 0 500 800">
+      <path fill="#1c6f84" fill-opacity="0.8" d="M0,320L8.3,266.7C16.6,213,33,107,50,96C66.2,85,83,171,99,170.7C115.9,171,132,85,149,74.7C165.5,64,182,128,199,181.3C215.2,235,232,277,248,272C264.8,267,281,213,298,213.3C314.5,213,331,267,348,272C364.1,277,381,235,397,218.7C413.8,203,430,213,447,229.3C463.4,245,480,267,497,245.3C513.1,224,530,160,546,133.3C562.8,107,579,117,596,112C612.4,107,629,85,646,64C662.1,43,679,21,695,64C711.7,107,728,213,745,266.7C761.4,320,778,320,794,293.3C811,267,828,213,844,186.7C860.7,160,877,160,894,138.7C910.3,117,927,75,943,80C960,85,977,139,993,160C1009.7,181,1026,171,1043,176C1059.3,181,1076,203,1092,197.3C1109,192,1126,160,1142,138.7C1158.6,117,1175,107,1192,128C1208.3,149,1225,203,1241,197.3C1257.9,192,1274,128,1291,85.3C1307.6,43,1324,21,1341,37.3C1357.2,53,1374,107,1390,149.3C1406.9,192,1423,224,1432,240L1440,256L1440,0L1431.7,0C1423.4,0,1407,0,1390,0C1373.8,0,1357,0,1341,0C1324.1,0,1308,0,1291,0C1274.5,0,1258,0,1241,0C1224.8,0,1208,0,1192,0C1175.2,0,1159,0,1142,0C1125.5,0,1109,0,1092,0C1075.9,0,1059,0,1043,0C1026.2,0,1010,0,993,0C976.6,0,960,0,943,0C926.9,0,910,0,894,0C877.2,0,861,0,844,0C827.6,0,811,0,794,0C777.9,0,761,0,745,0C728.3,0,712,0,695,0C678.6,0,662,0,646,0C629,0,612,0,596,0C579.3,0,563,0,546,0C529.7,0,513,0,497,0C480,0,463,0,447,0C430.3,0,414,0,397,0C380.7,0,364,0,348,0C331,0,314,0,298,0C281.4,0,265,0,248,0C231.7,0,215,0,199,0C182.1,0,166,0,149,0C132.4,0,116,0,99,0C82.8,0,66,0,50,0C33.1,0,17,0,8,0L0,0Z"></path>
+    </svg> -->
+
+     <!-- Notice box -->
+  <ion-list class="contact-note">
+    <ion-item class="notice-title">
+      <ion-icon size="large" name="reader-outline"></ion-icon>
+      <ion-text color="warning">
+        IMPORTANT
+      </ion-text>
+    </ion-item>
+
+    <ion-item class="note-points" lines="none">
+      1. Your Name is compulsory.
+    </ion-item>
+    <ion-item class="note-points" lines="none">
+      2. Either your phone number or email is compulsory.
+    </ion-item>
+    <ion-item class="note-points" lines="none">
+      3. These details will be used by the owner to contact you.
+    </ion-item>
+  </ion-list>
+  </div>
+
+  <!-- Notice box -->
+  <!-- <ion-list class="contact-note">
+    <ion-item class="notice-title">
+      <ion-icon size="large" name="reader-outline"></ion-icon>
+      <ion-text color="warning">
+        IMPORTANT
+      </ion-text>
+    </ion-item>
+
+    <ion-item class="note-points" lines="none">
+      1. Your Name is compulsory.
+    </ion-item>
+    <ion-item class="note-points" lines="none">
+      2. Either your phone number or email is compulsory.
+    </ion-item>
+    <ion-item class="note-points" lines="none">
+      3. These details will be used by the owner to contact you.
+    </ion-item>
+  </ion-list> -->
+
+  <div class="scroll-form">
+    <!-- Form box -->
+    <ion-list class="form-box">
+
+      <ion-item class="field">
+        <ion-label class="field-label" position="stacked">Name : </ion-label>
+        <ion-input id="name-field"
+         autocapitalize="on"  [(ngModel)] = "item.contact.name"
+         required="true">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="field">
+        <ion-label class="field-label" position="stacked">Address (Private/institutional) : </ion-label>
+        <ion-textarea id="address-field" [(ngModel)] = "item.contact.address">
+        </ion-textarea>
+      </ion-item>
+
+      <ion-item class="field">
+        <ion-label class="field-label" position="stacked">Telephone No : </ion-label>
+        <ion-input id="telephone-field" [(ngModel)] = "item.contact.mobileNumber">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="field">
+        <ion-label class="field-label" position="stacked">Email : </ion-label>
+        <ion-input type="email" id="email-field" [(ngModel)] = "item.contact.email">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="field">
+        <ion-label class="additionalNote-label" position="stacked">Any Note for Caller : </ion-label>
+        <ion-textarea id="address-field" [(ngModel)] = "item.contact.extraNote">
+        </ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <ion-item class="error-message" lines="none" *ngIf="errorMessage.length > 0">
+      <ion-text class="error-message">
+        *{{errorMessage}}
+      </ion-text>
+    </ion-item>
+    <ion-item class="post-item" (click)="onPostItem()">
+      <ion-text class="post-item" >
+        POST
+      </ion-text>
+    </ion-item>
+
+  </div>
+
+</ion-content>

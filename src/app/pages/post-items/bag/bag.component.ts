@@ -61,6 +61,7 @@ export class BagComponent implements OnInit {
   }
 
   onSubmit(){
+    console.log("Item submit button clicked.");
     this.isFieldsValid = true;   // nothing to valid in bag component
     if (this.isFieldsValid) {
       // set the object to storage and go to contact page

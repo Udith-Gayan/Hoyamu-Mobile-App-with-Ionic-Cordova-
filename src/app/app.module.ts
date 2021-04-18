@@ -29,6 +29,8 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { Base64 } from '@ionic-native/base64/ngx';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -45,7 +47,8 @@ import { Base64 } from '@ionic-native/base64/ngx';
               ScreenOrientation,
               SplashScreen,
               WebView,
-              Base64],
+              Base64,
+              Keyboard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

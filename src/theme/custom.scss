@@ -23,7 +23,7 @@ ion-item.input-item {
   position: absolute;
 }
 .logo-watermark {
-  position: absolute;
+  position: fixed;
   top: 40vh;
   left: 35vw;
   width: 150px;
@@ -110,9 +110,20 @@ ion-item.input-item {
   --ion-text-color: #ffffff;
 }
 
-.next-button-in-item-forms{
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-left: 30%;
-  margin-right: 30%;
+/*** Submit details button in each post item page **/
+
+ion-item.submit-details-button {
+
+  --ion-item-background: #ffffff00;
+  padding: 0px!important;
 }
+
+.next-button-in-item-forms{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 25%;
+  margin-right: 20%;
+
+  height: 35px;
+}
+
