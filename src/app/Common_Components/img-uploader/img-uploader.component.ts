@@ -100,6 +100,11 @@ export class ImgUploaderComponent implements OnInit {
 
   }
 
+  /**
+   *
+   * @param imageExtension
+   * @returns newFileName in the format eg: bag_1224273.png
+   */
   createFileName(imageExtension: string) {
     let d = new Date(), n = d.getTime(), newFileName = this.imageNamePrefix + '_' + n + '.' + imageExtension;
     return newFileName;

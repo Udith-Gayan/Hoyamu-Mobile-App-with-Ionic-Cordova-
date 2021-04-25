@@ -1,3 +1,4 @@
+import { ItemCategoryType } from './../Common_Components/enums/ItemCategoryEnum';
 import { ContactDto } from './contact.model';
 export class ItemSubmitDto {
     public item: Item;
@@ -10,5 +11,6 @@ export class Item {
     public description?: string;
     public imageUrl?: string;
     public imageNameKey?: string; // used to read the native storage to get the image data
+    public mainCategoryType: ItemCategoryType;
 }
 

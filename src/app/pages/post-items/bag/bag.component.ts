@@ -1,3 +1,4 @@
+import { ItemCategoryType } from './../../../Common_Components/enums/ItemCategoryEnum';
 import { Item, ItemSubmitDto } from './../../../Dto/item-submit.model';
 import { Component, OnInit } from '@angular/core';
 import { ContactDto } from 'src/app/Dto/contact.model';
@@ -61,11 +62,14 @@ export class BagComponent implements OnInit {
   }
 
   onSubmit(){
+    this.item.item.mainCategoryType = ItemCategoryType.Bag;    // Essentially mention the type here
+    
     console.log("Item submit button clicked.");
     this.isFieldsValid = true;   // nothing to valid in bag component
     if (this.isFieldsValid) {
       // set the object to storage and go to contact page
       this.storage.setItem(this.constants.STOREDITEM, JSON.stringify(this.item));
+      this.storage.setItem(this.constants.STOREDITEMTYPE, JSON.stringify(ItemCategoryType.Bag));
       console.log(this.storage.getItem(this.constants.STOREDITEM));
       this.pageRouter.goTo('post-item-menu/contact-form')
     } else {

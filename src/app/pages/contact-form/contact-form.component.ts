@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { CommonConstants } from 'src/app/constants/common';
 import { ContactDto } from 'src/app/Dto/contact.model';
 import { Item, ItemSubmitDto } from 'src/app/Dto/item-submit.model';
+import { BlobService } from 'src/app/services/blob.service';
+import { PageRouterService } from 'src/app/services/page-router.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -10,22 +14,52 @@ import { Item, ItemSubmitDto } from 'src/app/Dto/item-submit.model';
 })
 export class ContactFormComponent implements OnInit {
 
-  constructor(public keyboard: Keyboard) { }
+  constructor(public keyboard: Keyboard, private storage: NativeStorage, private pageRouter: PageRouterService,
+    private constants: CommonConstants, private blobService: BlobService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.item.item = new Item();
     this.item.contact = new ContactDto();
+
+    await this.storage.getItem(this.constants.STOREDITEM).then(value => {
+      console.log(" val goes here");
+      if([null,''].includes(value)){
+        this.item.item = new Item();
+        this.item.contact = new ContactDto();
+      } else {
+        this.item = <ItemSubmitDto>JSON.parse(value);
+      }
+    },
+    reason => {
+      console.log(" reason");
+      this.item.item = new Item();
+      this.item.contact = new ContactDto();
+    });
+
+
+
   }
 
   item: ItemSubmitDto = new ItemSubmitDto();
   isFormFieldsValid = false;
   errorMessage: string = '';
+  formData: FormData = new FormData();
 
 
-  onPostItem() {
+  async onPostItem() {
     console.log("Post button clicked");
     if(this.isContactFormFieldsValid()) {
       // Show success comppetions
+      await this.storage.getItem(this.item.item.imageNameKey).then(imageString => {
+        let imageBlob = this.blobService.dataURItoBlob(imageString);
+        this.formData.append("image", imageBlob);
+        this.formData.append("item", JSON.stringify(this.item.item));
+        this.formData.append("contact", JSON.stringify(this.item.contact));
+        this.formData.append("mainCategoryType", this.item.item.mainCategoryType.toString());
+      }, err => {
+        console.log(err);
+      });
+
     } else {
       console.log(this.errorMessage);
       return;

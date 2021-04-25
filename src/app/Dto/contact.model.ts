@@ -4,5 +4,6 @@ export class ContactDto{
     public mobileNumber: string;
     public email: string;
     public extraNote: string;
-    public address: string;
+    public address?: string;
+    public institute?: string;
 }
