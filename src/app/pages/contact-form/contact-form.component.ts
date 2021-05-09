@@ -1,3 +1,4 @@
+import { ItemCategoryType } from './../../Common_Components/enums/ItemCategoryEnum';
 import { Component, OnInit } from '@angular/core';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
@@ -5,6 +6,7 @@ import { CommonConstants } from 'src/app/constants/common';
 import { ContactDto } from 'src/app/Dto/contact.model';
 import { Item, ItemSubmitDto } from 'src/app/Dto/item-submit.model';
 import { BlobService } from 'src/app/services/blob.service';
+import { ItemRegistrationService } from 'src/app/services/http-service/item-registration.service';
 import { PageRouterService } from 'src/app/services/page-router.service';
 
 @Component({
@@ -15,7 +17,8 @@ import { PageRouterService } from 'src/app/services/page-router.service';
 export class ContactFormComponent implements OnInit {
 
   constructor(public keyboard: Keyboard, private storage: NativeStorage, private pageRouter: PageRouterService,
-    private constants: CommonConstants, private blobService: BlobService) { }
+    private constants: CommonConstants, private blobService: BlobService,
+    private registerService : ItemRegistrationService) { }
 
   async ngOnInit() {
     this.item.item = new Item();
@@ -36,8 +39,6 @@ export class ContactFormComponent implements OnInit {
       this.item.contact = new ContactDto();
     });
 
-
-
   }
 
   item: ItemSubmitDto = new ItemSubmitDto();
@@ -56,6 +57,7 @@ export class ContactFormComponent implements OnInit {
         this.formData.append("item", JSON.stringify(this.item.item));
         this.formData.append("contact", JSON.stringify(this.item.contact));
         this.formData.append("mainCategoryType", this.item.item.mainCategoryType.toString());
+        this.registerService.registerItem(this.formData, ItemCategoryType.Bag);
       }, err => {
         console.log(err);
       });
