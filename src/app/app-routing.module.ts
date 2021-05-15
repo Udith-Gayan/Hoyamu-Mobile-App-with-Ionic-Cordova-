@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ShowLanguagePageService } from './services/guard-services/can-activate-services/show-language-page.service';
 
 const routes: Routes = [
   // {
@@ -21,7 +22,8 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule),
+    canActivate: [ShowLanguagePageService]
   },
   {
     path: 'post-item-menu',

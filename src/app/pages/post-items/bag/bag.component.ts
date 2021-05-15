@@ -5,6 +5,7 @@ import { ContactDto } from 'src/app/Dto/contact.model';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { PageRouterService } from 'src/app/services/page-router.service';
 import { CommonConstants } from 'src/app/constants/common';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-bag',
@@ -14,7 +15,8 @@ import { CommonConstants } from 'src/app/constants/common';
 export class BagComponent implements OnInit {
 
   constructor(private storage: NativeStorage, private pageRouter: PageRouterService,
-              private constants: CommonConstants) { }
+              private constants: CommonConstants,
+              private plt: Platform) { }
 
   item: ItemSubmitDto = new ItemSubmitDto();
   isFieldsValid = false;
@@ -23,22 +25,25 @@ export class BagComponent implements OnInit {
     this.item.item = new Item();
     this.item.contact = new ContactDto();
 
-    await this.storage.getItem(this.constants.STOREDITEM).then(value => {
-      console.log(" val goes here");
-      if([null,''].includes(value)){
+    this.plt.ready().then(async (dr) =>{
+      await this.storage.getItem(this.constants.STOREDITEM).then(value => {
+        console.log(" val goes here");
+        if([null,''].includes(value)){
+          this.item.item = new Item();
+          this.item.contact = new ContactDto();
+        } else {
+          this.item = <ItemSubmitDto>JSON.parse(value);
+        }
+      },
+      reason => {
+        console.log(" reason");
         this.item.item = new Item();
         this.item.contact = new ContactDto();
-      } else {
-        this.item = <ItemSubmitDto>JSON.parse(value);
-      }
-    },
-    reason => {
-      console.log(" reason");
-      this.item.item = new Item();
-      this.item.contact = new ContactDto();
+      });
+
     });
 
-  }
+  } 
 
   onFoundDateChanged(event) {
     this.item.item.dateFound = event;

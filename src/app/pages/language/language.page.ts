@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageRouterService } from 'src/app/services/page-router.service';
 import { ToastController } from '@ionic/angular';
+import { CommonConstants } from 'src/app/constants/common';
 
 @Component({
   selector: 'app-language',
@@ -11,7 +12,8 @@ import { ToastController } from '@ionic/angular';
 export class LanguagePage implements OnInit {
 
   constructor(private pageRouter: PageRouterService,
-              public toastController: ToastController) { }
+              public toastController: ToastController,
+              private constants: CommonConstants) { }
 
   ngOnInit() {
   }

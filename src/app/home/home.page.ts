@@ -73,7 +73,7 @@ export class HomePage implements AfterViewInit {
 
   gotoLanguagePage() {
     setTimeout(() => {
-      this.router.navigate(['/language']);
+      this.router.navigate(['/dashboard']);
     }, 3000);
   }
 

@@ -13,6 +13,7 @@ export class BlobService {
    * @returns A blob file
    */
   public dataURItoBlob(dataURI) {
+    console.log("convert base64 to raw binary data held in a string");
     // convert base64 to raw binary data held in a string
     var byteString = atob(dataURI.split(',')[1]);
 

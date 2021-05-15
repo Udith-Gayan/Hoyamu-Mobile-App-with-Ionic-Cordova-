@@ -8,6 +8,7 @@ import { Item, ItemSubmitDto } from 'src/app/Dto/item-submit.model';
 import { BlobService } from 'src/app/services/blob.service';
 import { ItemRegistrationService } from 'src/app/services/http-service/item-registration.service';
 import { PageRouterService } from 'src/app/services/page-router.service';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-contact-form',
@@ -18,49 +19,61 @@ export class ContactFormComponent implements OnInit {
 
   constructor(public keyboard: Keyboard, private storage: NativeStorage, private pageRouter: PageRouterService,
     private constants: CommonConstants, private blobService: BlobService,
-    private registerService : ItemRegistrationService) { }
+    private registerService : ItemRegistrationService,
+    private plt: Platform) { }
 
-  async ngOnInit() {
-    this.item.item = new Item();
-    this.item.contact = new ContactDto();
-
-    await this.storage.getItem(this.constants.STOREDITEM).then(value => {
-      console.log(" val goes here");
-      if([null,''].includes(value)){
-        this.item.item = new Item();
-        this.item.contact = new ContactDto();
-      } else {
-        this.item = <ItemSubmitDto>JSON.parse(value);
-      }
-    },
-    reason => {
-      console.log(" reason");
-      this.item.item = new Item();
-      this.item.contact = new ContactDto();
-    });
-
-  }
-
+  formData: FormData = new FormData();
   item: ItemSubmitDto = new ItemSubmitDto();
   isFormFieldsValid = false;
   errorMessage: string = '';
-  formData: FormData = new FormData();
+
+   ngOnInit() {
+    this.item.item = new Item();
+    this.item.contact = new ContactDto();
+
+    this.plt.ready().then( async (dr) => {
+
+      await this.storage.getItem(this.constants.STOREDITEM).then(value => {
+        if([null,''].includes(value)){
+          this.item.item = new Item();
+          this.item.contact = new ContactDto();
+        } else {
+          this.item = <ItemSubmitDto>JSON.parse(value);
+        }
+      },
+      reason => {
+        console.log(" reason");
+        this.item.item = new Item();
+        this.item.contact = new ContactDto();
+      });
+
+    });
 
 
-  async onPostItem() {
+  }
+
+   onPostItem() {
     console.log("Post button clicked");
     if(this.isContactFormFieldsValid()) {
+
       // Show success comppetions
-      await this.storage.getItem(this.item.item.imageNameKey).then(imageString => {
+      let process =  this.storage.getItem(this.item.item.imageNameKey).then(imageString => {
+        alert("ready for posting after retrieving data from storage");
         let imageBlob = this.blobService.dataURItoBlob(imageString);
         this.formData.append("image", imageBlob);
         this.formData.append("item", JSON.stringify(this.item.item));
         this.formData.append("contact", JSON.stringify(this.item.contact));
         this.formData.append("mainCategoryType", this.item.item.mainCategoryType.toString());
+        console.log("1");
         this.registerService.registerItem(this.formData, ItemCategoryType.Bag);
       }, err => {
+        alert("Errorrr for posting after retrieving data from storage");
         console.log(err);
+      }).then(() => {
+        alert("complted");
+        this.storage.remove(this.item.item.imageNameKey);
       });
+
 
     } else {
       console.log(this.errorMessage);

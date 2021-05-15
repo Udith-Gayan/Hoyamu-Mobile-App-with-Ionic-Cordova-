@@ -7,7 +7,8 @@ import { HttpService } from './http.service';
 })
 export class ItemRegistrationService {
 
-  private baseUrl: string = 'http://192.168.1.101:8915/api/PostItem/';   // correct this
+  private baseUrl: string = 'http://35afd7c799c4.ngrok.io/api/PostItem/';   // correct this
+  // run ngrok http 8915 -host-header=localhost:8915
 
   constructor(private httpService: HttpService) { }
 
@@ -16,6 +17,7 @@ export class ItemRegistrationService {
  * @param mainCategory enum of the category type
  */
  registerItem(formData : FormData, mainCategory: ItemCategoryType){
+    console.log("2");
    //Add if else block for item categories
    if(mainCategory == ItemCategoryType.Bag){
      return this.registerBag(formData);
@@ -26,10 +28,11 @@ export class ItemRegistrationService {
 
  private registerBag(formData: FormData) {
    const url = this.baseUrl + 'bagItem';
-
+   console.log("bag found");
    this.httpService.postRequest(url, formData)
    .subscribe(
      res => {
+       alert(res)
        console.log(res);
 
      },

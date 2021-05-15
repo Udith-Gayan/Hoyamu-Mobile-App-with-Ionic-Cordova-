@@ -10,7 +10,9 @@ export class HttpService {
 
 
   postRequest(url: string, body: any, options: any = null){
+    console.log("req sent");
     if(options == null){
+      console.log("req sent");
       return this.http.post(url, body);
     }
     return this.http.post(url, body, options);
