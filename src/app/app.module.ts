@@ -30,6 +30,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { Base64 } from '@ionic-native/base64/ngx';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { HTTP } from '@ionic-native/http/ngx';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
               SplashScreen,
               WebView,
               Base64,
-              Keyboard],
+              Keyboard,
+              HTTP],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

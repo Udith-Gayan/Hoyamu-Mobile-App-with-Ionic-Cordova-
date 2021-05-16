@@ -9,6 +9,7 @@ import { BlobService } from 'src/app/services/blob.service';
 import { ItemRegistrationService } from 'src/app/services/http-service/item-registration.service';
 import { PageRouterService } from 'src/app/services/page-router.service';
 import { Platform } from '@ionic/angular';
+import { FileEntry } from '@ionic-native/file/ngx';
 
 @Component({
   selector: 'app-contact-form',
@@ -52,7 +53,7 @@ export class ContactFormComponent implements OnInit {
 
   }
 
-   onPostItem() {
+  onPostItem() {
     console.log("Post button clicked");
     if(this.isContactFormFieldsValid()) {
 
@@ -71,7 +72,37 @@ export class ContactFormComponent implements OnInit {
         console.log(err);
       }).then(() => {
         alert("complted");
-        this.storage.remove(this.item.item.imageNameKey);
+      });
+
+
+    } else {
+      console.log(this.errorMessage);
+      return;
+    }
+  }
+
+  //Testing for uploadFile function
+  onPostItem_2() {
+    console.log("Post button clicked");
+    if(this.isContactFormFieldsValid()) {
+
+      // Show success comppetions
+      let process =  this.storage.getItem(this.item.item.imageNameKey).then(async imageString => {
+        alert("ready for posting after retrieving data from storage");
+        let fileEntry: FileEntry = await this.blobService.writedataURItoFileAsync(imageString, 'Temporary Imagessss/', this.item.item.imageNameKey);  // Give a Constant name for the file, remove this folder parameter
+        let filepath = fileEntry.toURL();
+        let bodyData = {
+                        "item": JSON.stringify(this.item.item),
+                        "contact": JSON.stringify(this.item.contact),
+                        "mainCategoryType": this.item.item.mainCategoryType.toString()};
+        this.registerService.registerItemNative(filepath,'image', bodyData, ItemCategoryType.Bag )
+
+
+      }, err => {
+        alert("Errorrr for posting after retrieving data from storage");
+        console.log(err);
+      }).then(() => {
+        alert("complted");
       });
 
 
