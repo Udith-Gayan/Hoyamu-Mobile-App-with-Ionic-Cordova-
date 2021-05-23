@@ -149,5 +149,8 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <allow-navigation href="https://192.168.1.101:8100" sessionid="2e94a69e" />
     <allow-navigation href="http://192.168.1.101:8100" sessionid="53f7e6a3" />
+    <allow-navigation href="http://192.168.1.103/8915" />
+    <allow-navigation href="https://192.168.1.103/44309" />
+    <allow-navigation href="hoyamuapi-dev.azurewebsites.net" />
     <allow-navigation href="*" />
 </widget>

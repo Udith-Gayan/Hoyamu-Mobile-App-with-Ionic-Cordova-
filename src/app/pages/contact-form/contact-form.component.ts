@@ -89,7 +89,7 @@ export class ContactFormComponent implements OnInit {
       // Show success comppetions
       let process =  this.storage.getItem(this.item.item.imageNameKey).then(async imageString => {
         alert("ready for posting after retrieving data from storage");
-        let fileEntry: FileEntry = await this.blobService.writedataURItoFileAsync(imageString, 'Temporary Imagessss/', this.item.item.imageNameKey);  // Give a Constant name for the file, remove this folder parameter
+        let fileEntry: FileEntry = await this.blobService.writedataURItoFileAsync(imageString, 'Temporary Images/', this.item.item.imageNameKey);  // Give a Constant name for the file, remove this folder parameter
         let filepath = fileEntry.toURL();
         let bodyData = {
                         "item": JSON.stringify(this.item.item),

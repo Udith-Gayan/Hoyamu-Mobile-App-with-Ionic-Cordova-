@@ -51,7 +51,7 @@ export class BlobService {
     
     let DataBlob = this.dataURItoBlob(dataURI);  
    
-    let filePath = this.file.externalDataDirectory + folderName;  // Issue: This folder is not automatically created Need to remove this
+    let filePath = this.file.externalDataDirectory;  // This folder is : storage/emulated/0/Android/data/io.ionic.starter/files/
 
     try{
       let fileEntry : FileEntry = await this.file.writeFile(filePath, fileName, DataBlob, {replace: true, append: false});

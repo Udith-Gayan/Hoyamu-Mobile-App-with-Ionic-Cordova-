@@ -8,10 +8,14 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 })
 export class ItemRegistrationService {
 
-  private baseUrl: string = 'http://56f42ebf7b10.ngrok.io/api/PostItem/';   // correct this
+  private baseUrl: string = 'https://hoyamuapi-dev.azurewebsites.net/api/PostItem/';   // correct this, Takethis url from environment ariables
   // run ngrok http 8915 -host-header=localhost:8915
 
   constructor(private httpService: HttpService, private storage: NativeStorage) { }
+
+
+/** There are two methods. The second method uses native http plugin to make http requests.  */
+
 
 /**
  * @param formData is the data form object
